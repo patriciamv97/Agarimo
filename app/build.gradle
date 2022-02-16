@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-
+    implementation platform('com.google.firebase:firebase-bom:29.1.0')
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
@@ -46,3 +46,5 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
 
 }
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
