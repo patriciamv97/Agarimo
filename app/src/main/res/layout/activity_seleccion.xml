@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background=" #54f4c4">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Te damos la\nbienvenida a Agarimo"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="30dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30dp" />
+
+    <ImageView
+        android:layout_width="502px"
+        android:layout_height="507px"
+        android:layout_gravity="center"
+        android:src="@drawable/foto"
+        android:layout_marginTop="20dp"/>
+    <Button
+        android:id="@+id/btnSingIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:text="iniciar sesión"
+        android:textColor="#54f4c4"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="@color/white"/>
+    <Button
+        android:id="@+id/btnSingUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:text="Registrarme"
+        android:textColor="#54f4c4"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="@color/white"/>
+
+</FrameLayout>
