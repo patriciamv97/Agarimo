@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Agarimo">
         <activity
+            android:name=".ActivitySingIn"
+            android:exported="true" />
+        <activity
             android:name=".ActivitySeleccion"
             android:exported="true" />
         <activity
