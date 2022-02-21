@@ -18,17 +18,21 @@ class ActivitySeleccion : AppCompatActivity() {
         val userType = bundle?.get("TIPO_USUARIO")
 
 
-        intent2=Intent(this, ActivitySingIn::class.java)
+
 
 
 
         binding.btnSingIn.setOnClickListener {
+            intent2=Intent(this, ActivitySingIn::class.java)
             intent2.putExtra("USUARIO",userType.toString())
             startActivity(intent2)
 
         }
 
         binding.btnSingUp.setOnClickListener {
+            intent2= Intent(this, ActivitySignUp::class.java)
+            intent2.putExtra("USUARIO",userType.toString())
+            startActivity(intent2)
 
         }
     }
