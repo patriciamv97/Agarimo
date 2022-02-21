@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/azulVerdoso"
+        tools:context=".RegistroProfesional"
+
+        >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:src="@drawable/fotoperfil"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="75dp" />
+
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registro Profesionales :"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="31dp"
+            tools:layout_editor_absoluteY="35dp" />
+
+
+        <TextView
+            android:id="@+id/txtNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Nombre"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtCubrir"
+            app:layout_constraintStart_toStartOf="@+id/guideline3" />
+
+        <TextView
+            android:id="@+id/txtPunto"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="29dp"
+            android:text="*"
+            android:textColor="@color/rojo"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtCubrir"
+            app:layout_constraintStart_toEndOf="@+id/txtNombre" />
+
+        <TextView
+            android:id="@+id/txtCubrir"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+
+        <TextView
+            android:id="@+id/txtNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="28dp"
+            android:text="Nombre"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtCubrir"
+            app:layout_constraintStart_toStartOf="@+id/guideline3" />
+
+        <TextView
+            android:id="@+id/txtPunto"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="29dp"
+            android:text="*"
+            android:textColor="@color/rojo"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtCubrir"
+            app:layout_constraintStart_toEndOf="@+id/txtNombre" />
+
+        <TextView
+            android:id="@+id/txtCubrir"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="104dp"
+            android:background="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

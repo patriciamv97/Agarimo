@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background=" #54f4c4">
+    android:background="@color/azulVerdoso">
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|left"
         android:text="iniciar sesión"
-        android:textColor="#54f4c4"
+        android:textColor="@color/azulVerdoso"
         android:layout_marginLeft="30dp"
         android:layout_marginBottom="50dp"
         android:backgroundTint="@color/white"/>
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:text="Registrarme"
-        android:textColor="#54f4c4"
+        android:textColor="@color/azulVerdoso"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="50dp"
         android:backgroundTint="@color/white"/>
