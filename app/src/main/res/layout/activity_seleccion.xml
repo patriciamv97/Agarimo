@@ -30,7 +30,7 @@
         android:layout_gravity="bottom|left"
         android:text="iniciar sesión"
         android:textColor="@color/azulVerdoso"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginBottom="50dp"
         android:backgroundTint="@color/white"/>
     <Button
@@ -40,7 +40,7 @@
         android:layout_gravity="bottom|right"
         android:text="Registrarme"
         android:textColor="@color/azulVerdoso"
-        android:layout_marginRight="30dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="50dp"
         android:backgroundTint="@color/white"/>
 
