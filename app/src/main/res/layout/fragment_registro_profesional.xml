@@ -495,9 +495,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="¿Tienes disponibilidad para atender servicios urgentes?"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etTitulacionSanitaria" />
@@ -519,9 +519,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Ahora cuéntanos algo sobre ti:"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etDisponibilidad" />
@@ -531,7 +531,6 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="50dp"
             android:background="@color/white"
             android:text="Arrastra tu CV o Video currículum"
             android:textAlignment="center"
@@ -539,6 +538,18 @@
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtAlgoSobreTi" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:text="Registrar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etAlgoSobreti" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
