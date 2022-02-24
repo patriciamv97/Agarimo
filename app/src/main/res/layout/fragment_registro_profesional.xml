@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentProfesional"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/azulVerdoso"
@@ -540,6 +541,7 @@
             app:layout_constraintTop_toBottomOf="@id/txtAlgoSobreTi" />
 
         <Button
+            android:id="@+id/btnRegistrarP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
