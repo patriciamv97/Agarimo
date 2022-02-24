@@ -25,6 +25,10 @@ class ActivitySignUp : AppCompatActivity(), RegistroProfesional.CallBack {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, RegistroCliente())
                 .commit()
+            /*
+            Hay que crear la activity principal que mostrará el mapa y los profesionales y así dotar de sentido y funcionalidad a la app
+            e implementarla aquí.
+             */
         }else{
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, RegistroProfesional())
@@ -32,7 +36,7 @@ class ActivitySignUp : AppCompatActivity(), RegistroProfesional.CallBack {
 
         }
     }
-
+    // Hacer metodo replaceFragment y sustituirlo en las funciones
     override fun onClickButton() {
         Toast.makeText(this,"El profesional ha sido registrado", Toast.LENGTH_SHORT).show()
         supportFragmentManager
