@@ -274,6 +274,7 @@
             android:textSize="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etCubrirIBAN1" />
+
         <TextView
             android:id="@+id/txtPunto7"
             android:layout_width="0dp"
@@ -341,6 +342,7 @@
             android:textSize="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etCubrirCP" />
+
         <TextView
             android:id="@+id/txtPunto9"
             android:layout_width="0dp"
@@ -376,6 +378,7 @@
             app:layout_constraintTop_toBottomOf="@id/etCubrirDireccion" />
 
         <RadioGroup
+            android:id="@+id/rpTitulacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -387,23 +390,155 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:text="Gerocultor/a" />
+                android:text="Gerocultor/a"
+                android:textColor="@color/white" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:text="Gerocultor/a" />
+                android:text="Auxiliar de enfermería"
+                android:textColor="@color/white" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:text="Gerocultor/a" />
-
+                android:text="Empleada del hogar con \nexperiencia en cuidado"
+                android:textColor="@color/white" />
 
         </RadioGroup>
+
+        <TextView
+            android:id="@+id/txtTitulo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Queremos saber más sobre ti:"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/rpTitulacion"
+            tools:layout_editor_absoluteX="126dp" />
+
+        <TextView
+            android:id="@+id/txtFormacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Formacion complementaria"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTitulo2" />
+
+        <EditText
+            android:id="@+id/etFormacion"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtFormacion" />
+
+        <TextView
+            android:id="@+id/txtExperiencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="¿Tienes experiencia en el sector?"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etFormacion" />
+
+        <EditText
+            android:id="@+id/etExeperiencia"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtExperiencia" />
+
+        <TextView
+            android:id="@+id/txtTitulacionSanitaria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="¿Qué titulación sanitaria tienes?"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etExeperiencia" />
+
+        <EditText
+            android:id="@+id/etTitulacionSanitaria"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTitulacionSanitaria" />
+
+        <TextView
+            android:id="@+id/txtDisponibilidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="¿Tienes disponibilidad para atender servicios urgentes?"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etTitulacionSanitaria" />
+
+        <EditText
+            android:id="@+id/etDisponibilidad"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtDisponibilidad" />
+
+        <TextView
+            android:id="@+id/txtAlgoSobreTi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Ahora cuéntanos algo sobre ti:"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etDisponibilidad" />
+
+        <EditText
+            android:id="@+id/etAlgoSobreti"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="50dp"
+            android:background="@color/white"
+            android:text="Arrastra tu CV o Video currículum"
+            android:textAlignment="center"
+            android:textColor="@color/rojo"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtAlgoSobreTi" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
