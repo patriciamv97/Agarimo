@@ -48,6 +48,7 @@ class ActivitySingIn : AppCompatActivity() {
                     val user = auth.currentUser
                     //Se llama al método que actualizará el layout cuando se haya iniciado sesión y se le pasa el usuario
                     updateUI(user, userType)
+                    finish()
                 } else {
                     //  Si el inicio de sesión falla, muestra un mensaje al usuario
                     Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT)
