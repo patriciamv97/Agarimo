@@ -37,8 +37,8 @@ class ActivitySignUp : AppCompatActivity(), Registro.CallBack {
     private val TAG = "Real Time"
     lateinit var email: String
     lateinit var password: String
-    lateinit var latitud : String
-    lateinit var longitud : String
+    lateinit var latitud: String
+    lateinit var longitud: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +49,6 @@ class ActivitySignUp : AppCompatActivity(), Registro.CallBack {
         getLastLocation()
 
 
-
     }
 
     private fun createAccount(email: String, password: String) {
@@ -58,6 +57,7 @@ class ActivitySignUp : AppCompatActivity(), Registro.CallBack {
             el listener del estado de autenticación será notificado y la lógica para manejar el
             el usuario que se ha registrado se puede resuelve en el listener.
         */
+
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -68,13 +68,15 @@ class ActivitySignUp : AppCompatActivity(), Registro.CallBack {
                     val user = auth.currentUser
                 } else {
                     //  Si el registro falla, muestra un mensaje al usuario
-                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT)
+                        .show()
                     //Logs de control
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
                     Log.d("estado", "usuario NO registrado")
 
                 }
             }
+
     }
 
     fun loadFragment(fragment: Fragment) {
@@ -90,6 +92,7 @@ class ActivitySignUp : AppCompatActivity(), Registro.CallBack {
         val profesional = Profesionales(nombre, lt, lg)
         database.child(uid).setValue(profesional)
     }
+
     fun writeNewDataCliente(uid: String, nombre: String, email: String, password: String) {
         Log.d(TAG, "Escribiendo datos")
         val cliente = Clientes(nombre, email, password)
@@ -105,84 +108,94 @@ class ActivitySignUp : AppCompatActivity(), Registro.CallBack {
         val nombre = findViewById<EditText>(R.id.etCubrirNombre)
         val email = findViewById<EditText>(R.id.etCubrirEmail)
         val password = findViewById<EditText>(R.id.etCubirPassword)
+        if (email.text != null || password.text != null || nombre.text != null) {
+            Toast.makeText(this,"NULO"+email.text,Toast.LENGTH_SHORT).show()
+           /* if (userType == "Cliente") {
+                createAccount(email?.text.toString(), password?.text.toString())
+                val uid: String? = auth.currentUser?.uid
+                database = Firebase.database.getReference("clientes")
+                if (uid != null) {
+                    writeNewDataCliente(
+                        uid,
+                        nombre.text.toString(),
+                        email.text.toString(),
+                        password.text.toString()
+                    )
+                    Toast.makeText(this, "Cliente registrado en la bd", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "No se registro el cliente", Toast.LENGTH_SHORT).show()
+                }
+                val intent = Intent(this, MapsActivity::class.java)
+                startActivity(intent)
 
-        Toast.makeText(this, "El usuario ha sido registrado", Toast.LENGTH_SHORT).show()
-        loadFragment(ProfesionalRegistrado())
-        if (userType == "Cliente") {
-            createAccount(email.text.toString(), password.text.toString())
-            val uid : String? = auth.currentUser?.uid
-            database = Firebase.database.getReference("clientes")
-            if(uid!=null) {
-                writeNewDataCliente(uid, nombre.text.toString(),email.text.toString(),password.text.toString())
-                Toast.makeText(this,"Cliente registrado en la bd", Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(this,"No se registro el cliente",Toast.LENGTH_SHORT).show()
+            } else {
+                createAccount(email.text.toString(), password.text.toString())
+                val uid: String? = auth.currentUser?.uid
+                database = Firebase.database.getReference("profesionales")
+                Log.d("Coordenadas", "lg" + longitud + " lt" + latitud)
+                Log.d("ui", "" + uid)
+                if (uid != null && latitud != null && longitud != null) {
+                    writeNewDataProfesional(
+                        uid,
+                        nombre.text.toString(),
+                        latitud.toDouble(),
+                        longitud.toDouble()
+                    )
+                    Toast.makeText(this, "Profesional registrado en la bd", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    Toast.makeText(this, "No se registro el profesional", Toast.LENGTH_SHORT).show()
+                }
+                loadFragment(ProfesionalRegistrado())
             }
-            /*
-               Hay que crear la activity principal que mostrará el mapa y los profesionales y así dotar de sentido y funcionalidad a la app
-               e implementarla aquí.
 
             */
-            val intent = Intent(this, MapsActivity::class.java)
-            startActivity(intent)
 
         } else {
-            createAccount(email.text.toString(), password.text.toString())
-            val uid : String? = auth.currentUser?.uid
-            database = Firebase.database.getReference("profesionales")
-            Log.d("Coordenadas","lg"+longitud+" lt"+latitud)
-            Log.d("ui",""+uid)
-            if (uid != null && latitud !=null && longitud !=null) {
-                writeNewDataProfesional(uid, nombre.text.toString(), latitud.toDouble(), longitud.toDouble())
-                Toast.makeText(this,"Profesional registrado en la bd", Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(this,"No se registro el profesional",Toast.LENGTH_SHORT).show()
-            }
-            loadFragment(ProfesionalRegistrado())
-
-
+            Toast.makeText(this, "Debes rellenar los campos", Toast.LENGTH_SHORT).show()
         }
-
     }
+
     @SuppressLint("MissingPermission")
-    private fun getLastLocation(){
-        if (checkPermissions()){
-            if (isLocationEnable()){
+    private fun getLastLocation() {
+        if (checkPermissions()) {
+            if (isLocationEnable()) {
                 fusedLocationProviderClient.lastLocation.addOnCompleteListener { task ->
-                    var location : Location? = task.result
-                    if (location==null){
+                    var location: Location? = task.result
+                    if (location == null) {
                         getNewLoaction()
 
-                    }else{
+                    } else {
                         // localizacion.text="Tus coordenadas actuales son:\nLat:"+location.latitude+";Log: "+location.longitude
                         latitud = location.latitude.toString()
                         longitud = location.longitude.toString()
                     }
                 }
 
-            }else{
-                Toast.makeText(this,"Tienes que dar el permiso de ubicacion", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Tienes que dar el permiso de ubicacion", Toast.LENGTH_SHORT)
+                    .show()
             }
 
-        }else{
+        } else {
             requestPermissions()
         }
     }
 
     @SuppressLint("MissingPermission")
-    private fun getNewLoaction(){
+    private fun getNewLoaction() {
         locationRequest = com.google.android.gms.location.LocationRequest()
-        locationRequest.priority= LocationRequest.PRIORITY_HIGH_ACCURACY
+        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         locationRequest.interval = 0
-        locationRequest.fastestInterval=0
-        locationRequest.numUpdates=2
+        locationRequest.fastestInterval = 0
+        locationRequest.numUpdates = 2
         fusedLocationProviderClient!!.requestLocationUpdates(
-            locationRequest,locationCallback, Looper.myLooper()
+            locationRequest, locationCallback, Looper.myLooper()
         )
 
     }
 
-    private val locationCallback = object : LocationCallback(){
+    private val locationCallback = object : LocationCallback() {
         override fun onLocationResult(p0: LocationResult) {
             var lastLocation: Location = p0.lastLocation
             //localizacion.text="Tus coordenadas actuales son:\nLat:"+lastLocation.latitude+";Log: "+lastLocation.longitude
@@ -239,8 +252,6 @@ class ActivitySignUp : AppCompatActivity(), Registro.CallBack {
             }
         }
     }
-
-
 
 
 }

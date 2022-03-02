@@ -2,14 +2,25 @@ package com.example.agarimo
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Resources
+import android.graphics.Color
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.agarimo.LecturaBd
+import com.example.agarimo.adapter.ProfesionalAdapter
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -17,15 +28,28 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.agarimo.databinding.ActivityMapsBinding
+import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
+import com.google.firebase.ktx.Firebase
+import org.json.JSONObject
+import org.json.JSONTokener
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener {
-
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
+    GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+
+
     companion object {
         const val REQUEST_CODE_LOCATION = 0
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -36,9 +60,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleMap.OnMyLocat
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        val intent= Intent(this, MapsActivity::class.java)
+
+
+
+
 
     }
 
+    override fun onRestart() {
+        super.onRestart()
+    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -53,27 +85,35 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleMap.OnMyLocat
         mMap = googleMap
         //Hago visible los botones para apliar y desampliar el mapa
         /// mMap.uiSettings.isZoomControlsEnabled = true
-        createMarker()
+
+        marcaProfesional(ListaProfesionales.listaProfesionales)
         mMap.setOnMyLocationButtonClickListener(this)
         mMap.setOnMyLocationClickListener(this)
         //Cuando se  ha cargado el mapa le decimos que activa la localización
         enableLocation()
+
+
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
-            when(item.itemId) {
+            when (item.itemId) {
                 R.id.page_1 -> {
-                    Toast.makeText(this,"boton clikado",Toast.LENGTH_SHORT).show()
-                    // Respond to navigation item 1 click
+                    Toast.makeText(this, "boton clikado", Toast.LENGTH_SHORT).show()
+                    val recyclerView = findViewById<RecyclerView>(R.id.recyclerProfesional)
+                    recyclerView.visibility = View.GONE
                     true
                 }
                 R.id.page_2 -> {
-                    Toast.makeText(this,"boton clikado",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "boton clikado", Toast.LENGTH_SHORT).show()
+                    val recyclerView = findViewById<RecyclerView>(R.id.recyclerProfesional)
+                    recyclerView.layoutManager= LinearLayoutManager(this)
+                    recyclerView.adapter= ProfesionalAdapter(ListaProfesionales.listaProfesionales)
                     //Crear un recicler view con la lista de profesionales de la base de datos
-
+                    recyclerView.visibility = View.VISIBLE
                     true
                 }
                 else -> false
             }
         }
+
 
 
     }
@@ -87,6 +127,29 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleMap.OnMyLocat
             null
         )
     }
+
+    private fun marcaProfesional(listaProfesionales: ArrayList<ProfesionalesBd>) {
+        listaProfesionales.forEach { profesional ->
+            val lt = profesional.lt ?: 0.0
+            val lg = profesional.lg ?: 0.0
+            val nombre = profesional.nombre
+            val ubicacion = LatLng(lt, lg)
+            val marca = mMap.addCircle(
+                CircleOptions().center(ubicacion).radius(500.0).strokeColor(Color.CYAN)
+                    .fillColor(Color.TRANSPARENT).clickable(true)
+
+            )
+            mMap.setOnCircleClickListener {
+                Toast.makeText(this, "$nombre", Toast.LENGTH_SHORT).show()
+            }
+            mMap.animateCamera(
+                CameraUpdateFactory.newLatLngZoom(ubicacion, 18f),
+                4000,
+                null
+            )
+        }
+    }
+
     /**
      * Método que comprueba que el permiso este activado, pidiendo el permiso y viendo si es igual a el PERMISSION_GRANTED
      */
@@ -165,6 +228,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleMap.OnMyLocat
             }
         }
     }
+
     /**
      * Método que sirve para comprobar si los permisos siguen activos caundo el usuario
      * se va de la aplicación y vuelve para que la aplicación no rompa
@@ -179,6 +243,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleMap.OnMyLocat
 
         }
     }
+
     /**
      * Método que sirve para que cuando el usuario pulse el botón OnMyLocation
      * le lleve a la ubicación

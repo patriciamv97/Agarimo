@@ -69,8 +69,10 @@ class ActivitySingIn : AppCompatActivity() , InicioSesion.CallBack{
     }
     private fun updateUI(user: FirebaseUser?, userType: String) {
         Log.d("estado", "" + auth.currentUser?.uid)
+        val uid : String? = auth.currentUser?.uid
         if (userType == "Cliente"){
             val intent = Intent(this, MapsActivity::class.java)
+            intent.putExtra("uid",uid)
             startActivity(intent)
 
 
