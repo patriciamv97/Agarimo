@@ -3,6 +3,7 @@ package com.example.agarimo
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
@@ -80,7 +81,6 @@ class ActivitySignUp : AppCompatActivity(), Registro.CallBack {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
-            .addToBackStack(null)
             .commit()
 
     }
@@ -123,6 +123,8 @@ class ActivitySignUp : AppCompatActivity(), Registro.CallBack {
                e implementarla aquí.
 
             */
+            val intent = Intent(this, MapsActivity::class.java)
+            startActivity(intent)
 
         } else {
             createAccount(email.text.toString(), password.text.toString())

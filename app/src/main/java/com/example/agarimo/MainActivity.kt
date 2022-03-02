@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.agarimo.databinding.ActivityMainBinding
 import android.content.Intent
+import android.util.Log
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnProfesional.setOnClickListener {
             tipoUsuario= "Profesional"
+            Toast.makeText(this,"QUE PASA", Toast.LENGTH_SHORT).show()
             intent.putExtra("TIPO_USUARIO", tipoUsuario)
             startActivity(intent)
 

@@ -1,174 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragmentProfesional"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/azulVerdoso"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:context=".Registro">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/fotoperfil"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/txttitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
+            android:text="Registro:"
+            android:textColor="@color/white"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="50dp"
-        android:text="Nombre"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
 
-    <TextView
-        android:id="@+id/txtPunto"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="50dp"
-        android:text="*"
-        android:textColor="@color/rojo"
-        android:textSize="30dp"
-        app:layout_constraintStart_toEndOf="@+id/txtNombre"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/fotoperfil"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txttitulo" />
 
-    <EditText
-        android:id="@+id/etCubrirNombre"
-        android:layout_width="250dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtNombre" />
+        <TextView
+            android:id="@+id/txtNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Nombre"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView" />
 
-    <TextView
-        android:id="@+id/txtApellidos"
-        android:layout_width="130dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:text="Apellidos"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etCubrirNombre" />
+        <TextView
+            android:id="@+id/txtPunto"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="50dp"
+            android:text="*"
+            android:textColor="@color/rojo"
+            android:textSize="30dp"
+            app:layout_constraintStart_toEndOf="@+id/txtNombre"
+            app:layout_constraintTop_toBottomOf="@id/imageView" />
 
-    <TextView
-        android:id="@+id/txtPunto2"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="50dp"
-        android:text="*"
-        android:textColor="@color/rojo"
-        android:textSize="30dp"
-        app:layout_constraintStart_toEndOf="@+id/txtApellidos"
-        app:layout_constraintTop_toTopOf="@id/etCubrirNombre" />
+        <EditText
+            android:id="@+id/etCubrirNombre"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtNombre" />
 
-    <EditText
-        android:id="@+id/etCubrirApellido"
-        android:layout_width="250dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtApellidos" />
+        <TextView
+            android:id="@+id/txtApellidos"
+            android:layout_width="130dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="20dp"
+            android:text="Apellidos"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etCubrirNombre" />
 
-    <TextView
-        android:id="@+id/txtEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:text="Email"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etCubrirApellido" />
+        <TextView
+            android:id="@+id/txtPunto2"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="50dp"
+            android:text="*"
+            android:textColor="@color/rojo"
+            android:textSize="30dp"
+            app:layout_constraintStart_toEndOf="@+id/txtApellidos"
+            app:layout_constraintTop_toTopOf="@id/etCubrirNombre" />
 
-    <TextView
-        android:id="@+id/txtPunto3"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="50dp"
-        android:text="*"
-        android:textColor="@color/rojo"
-        android:textSize="30dp"
-        app:layout_constraintStart_toEndOf="@+id/txtEmail"
-        app:layout_constraintTop_toTopOf="@+id/etCubrirApellido" />
+        <EditText
+            android:id="@+id/etCubrirApellido"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtApellidos" />
 
-    <EditText
-        android:id="@+id/etCubrirEmail"
-        android:layout_width="250dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/white"
-        android:inputType="textEmailAddress"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtEmail" />
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Email"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etCubrirApellido" />
 
-    <TextView
-        android:id="@+id/txtPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:text="Contraseña"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etCubrirEmail" />
+        <TextView
+            android:id="@+id/txtPunto3"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="50dp"
+            android:text="*"
+            android:textColor="@color/rojo"
+            android:textSize="30dp"
+            app:layout_constraintStart_toEndOf="@+id/txtEmail"
+            app:layout_constraintTop_toTopOf="@+id/etCubrirApellido" />
 
-    <TextView
-        android:id="@+id/txtPunto4"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="50dp"
-        android:text="*"
-        android:textColor="@color/rojo"
-        android:textSize="30dp"
-        app:layout_constraintStart_toEndOf="@+id/txtPassword"
-        app:layout_constraintTop_toTopOf="@+id/etCubrirEmail" />
+        <EditText
+            android:id="@+id/etCubrirEmail"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:inputType="textEmailAddress"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtEmail" />
 
-    <EditText
-        android:id="@+id/etCubirPassword"
-        android:layout_width="250dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/white"
-        android:inputType="textPassword"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtPassword" />
+        <TextView
+            android:id="@+id/txtPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Contraseña"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etCubrirEmail" />
 
-    <Button
-        android:id="@+id/btnResgistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Registrar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCubirPassword" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/txtPunto4"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="50dp"
+            android:text="*"
+            android:textColor="@color/rojo"
+            android:textSize="30dp"
+            app:layout_constraintStart_toEndOf="@+id/txtPassword"
+            app:layout_constraintTop_toTopOf="@+id/etCubrirEmail" />
+
+        <EditText
+            android:id="@+id/etCubirPassword"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:inputType="textPassword"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtPassword" />
+
+        <Button
+            android:id="@+id/btnResgistro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:text="Registrar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etCubirPassword" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
 
 

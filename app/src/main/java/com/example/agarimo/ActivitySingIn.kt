@@ -1,34 +1,30 @@
 package com.example.agarimo
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
 import android.widget.Toast
-import com.example.agarimo.databinding.ActivitySinginBinding
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class ActivitySingIn : AppCompatActivity() {
+class ActivitySingIn : AppCompatActivity() , InicioSesion.CallBack{
     private lateinit var auth: FirebaseAuth
-    private lateinit var binding: ActivitySinginBinding
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySinginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_singin)
         auth = Firebase.auth
-        val bundle = intent.extras
-        val userType = bundle?.get("USUARIO")
-        val usuario : String = userType.toString()
+        loadFragment(InicioSesion())
 
-        binding.btnSingIn.setOnClickListener {
 
-            signIn(binding.editTextTextEmailAddress.text.toString(), binding.editTextTextPassword.text.toString(), usuario )
-        }
     }
 
 
@@ -48,7 +44,7 @@ class ActivitySingIn : AppCompatActivity() {
                     val user = auth.currentUser
                     //Se llama al método que actualizará el layout cuando se haya iniciado sesión y se le pasa el usuario
                     updateUI(user, userType)
-                    finish()
+
                 } else {
                     //  Si el inicio de sesión falla, muestra un mensaje al usuario
                     Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT)
@@ -64,13 +60,22 @@ class ActivitySingIn : AppCompatActivity() {
      * Para que funcione deberias crear otras activities y que se cargasen cuando el registro
      * o el inicio fuesen correctos y te permitiesen acceder a las funcionalidades de la app
      */
+    fun loadFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragmentContainer2, fragment)
+            .commit()
 
+    }
     private fun updateUI(user: FirebaseUser?, userType: String) {
         Log.d("estado", "" + auth.currentUser?.uid)
         if (userType == "Cliente"){
-            // FrameCliente
+            val intent = Intent(this, MapsActivity::class.java)
+            startActivity(intent)
+
+
         }else{
-            // FrameProfesional
+           loadFragment(ProfesionalRegistrado())
 
         }
     }
@@ -81,6 +86,17 @@ class ActivitySingIn : AppCompatActivity() {
      */
     companion object {
         private const val TAG = "EmailPassword"
+    }
+
+    override fun onClickButton() {
+
+        var email = findViewById<EditText>(R.id.editTextTextEmailAddress)
+        var password = findViewById<EditText>(R.id.editTextTextPassword)
+        val bundle = intent.extras
+        val userType = bundle?.get("USUARIO")
+        val usuario : String = userType.toString()
+
+        signIn(email.text.toString(),password.text.toString(),usuario)
     }
 
 

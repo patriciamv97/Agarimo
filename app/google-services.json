@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "818135511265",
+    "project_id": "agarimo-24b7c",
+    "storage_bucket": "agarimo-24b7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818135511265:android:d762274bdd9b22ed2647a0",
+        "android_client_info": {
+          "package_name": "com.example.agarimo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "818135511265-ie7digfsbi5ipvsviop69sfsp8r0hkhf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACW7EryrwqhfbViS6P5TicqTO_BqGP8aE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "818135511265-ie7digfsbi5ipvsviop69sfsp8r0hkhf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
