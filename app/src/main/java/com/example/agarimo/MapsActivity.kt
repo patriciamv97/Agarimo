@@ -2,10 +2,8 @@ package com.example.agarimo
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.Resources
 import android.graphics.Color
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
@@ -15,11 +13,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.agarimo.LecturaBd
 import com.example.agarimo.adapter.ProfesionalAdapter
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -29,16 +24,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.agarimo.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.model.CircleOptions
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
-import com.google.firebase.ktx.Firebase
-import org.json.JSONObject
-import org.json.JSONTokener
+import kotlin.math.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
     GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener {
@@ -86,7 +72,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
         //Hago visible los botones para apliar y desampliar el mapa
         /// mMap.uiSettings.isZoomControlsEnabled = true
 
-        marcaProfesional(ListaProfesionales.listaProfesionales)
+        radioMaximo(ListaProfesionales.listaProfesionales)
         mMap.setOnMyLocationButtonClickListener(this)
         mMap.setOnMyLocationClickListener(this)
         //Cuando se  ha cargado el mapa le decimos que activa la localización
@@ -149,6 +135,29 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
             )
         }
     }
+    private fun radioMaximo(listaProfesionales: ArrayList<ProfesionalesBd>){
+        val bundle = intent.extras
+        val latitud = bundle?.getDouble("latitud") ?: 0.0
+        val longitud = bundle?.getDouble("longitud") ?: 0.0
+        listaProfesionales.forEach { profesional ->
+            val lt = profesional.lt ?: 0.0
+            val lg = profesional.lg ?: 0.0
+            //Variación de longitud y latitud en radianes
+            val ALT = radianes(lt.minus(latitud))
+            val ALG = radianes(lg.minus(longitud))
+            var a = sin(ALT/2).pow(2) + cos(radianes(latitud))* cos(radianes(lt))*sin(ALG/2).pow(2)
+            var c = 2 * atan2(sqrt(a), sqrt(1-a))
+            val distancia = 6378 * c // Radio ecuatorial de la tierra 6738
+            // Formula de Harsevine para el calculo de distancia entre coordenadas geograficas
+            Log.d("distancia", ""+distancia)
+            if (distancia<20000){
+                marcaProfesional(listaProfesionales)
+            }
+
+        }
+    }
+    private  fun radianes (valor : Double) = (PI/180)*valor
+
 
     /**
      * Método que comprueba que el permiso este activado, pidiendo el permiso y viendo si es igual a el PERMISSION_GRANTED
