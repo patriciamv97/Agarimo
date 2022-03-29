@@ -108,9 +108,8 @@ class ActivitySignUp : AppCompatActivity(), Registro.CallBack {
         val nombre = findViewById<EditText>(R.id.etCubrirNombre)
         val email = findViewById<EditText>(R.id.etCubrirEmail)
         val password = findViewById<EditText>(R.id.etCubirPassword)
-        if (email.text != null || password.text != null || nombre.text != null) {
-            Toast.makeText(this,"NULO"+email.text,Toast.LENGTH_SHORT).show()
-           /* if (userType == "Cliente") {
+        if (!email.text.isNullOrBlank()  || !password.text.isNullOrBlank() || !nombre.text.isNullOrBlank()) {
+            if (userType == "Cliente") {
                 createAccount(email?.text.toString(), password?.text.toString())
                 val uid: String? = auth.currentUser?.uid
                 database = Firebase.database.getReference("clientes")
@@ -127,6 +126,8 @@ class ActivitySignUp : AppCompatActivity(), Registro.CallBack {
                 }
                 val intent = Intent(this, MapsActivity::class.java)
                 startActivity(intent)
+                intent.putExtra("Latitud", latitud.toDouble())
+                intent.putExtra("longitud", longitud.toDouble())
 
             } else {
                 createAccount(email.text.toString(), password.text.toString())
@@ -149,7 +150,7 @@ class ActivitySignUp : AppCompatActivity(), Registro.CallBack {
                 loadFragment(ProfesionalRegistrado())
             }
 
-            */
+
 
         } else {
             Toast.makeText(this, "Debes rellenar los campos", Toast.LENGTH_SHORT).show()
